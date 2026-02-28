@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect
 import sqlite3
+import os
+from flask import Flask
 
+app = Flask(__name__)
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 
 # ---------------- Banco ----------------
@@ -71,4 +75,5 @@ def excluir(cpf):
 
 if __name__ == '__main__':
     inicializar_banco()
+
     app.run(debug=True)
